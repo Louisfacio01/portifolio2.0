@@ -2,86 +2,213 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portifolio 2.0</title>
-    <link rel="stylesheet" href="styles.css">
-
-        <header class="navbar">
-        <div class="name">
-        <h5>LUIZ</h5>
-        </div>
-        <a href="">Home</a>
-        <a href="">About</a>
-        <a href="">Services</a>
-        <a href="">Contact</a>
-    </header>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-
-
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-<script src="https://kit.fontwasome.com/77b4ef7fc8.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styleS.css">
+    <script src="https://kit.fontawesome.com/77b4ef7fc8.js" crossorigin="anonymous"></script>
+    <title>LUIZ FERNANDO/PORTFOLIO</title>
 </head>
 <body>
 
 
-
-    <section class="home flex-center">
-        <div class="home-container">
-            <div class="media-icons">
-                <a href=""><i class="fab fa-whatsapp"></i></a>
-                <a href=""><i class="fab fa-linkedin-in"></i></a>
-                <a href=""><i class="fab fa-github"></i></a>
+    <!-- Header -->
+    <header>
+        <div class="nav-bar">
+            <a href="#" class="logo">Luiz Fernando</a>
+            <div class="navigation">
+                <div class="nav-items">
+                    <a href="#home">Home</a>
+                    <a href="#about">Sobre</a>
+                    <a href="#skills">Habilidades</a>
+                    <a href="#portfolio">Portfolio</a>
+                    <a href="#contact ">Contatos (Em Breve)</a>
+                </div>
             </div>
         </div>
+    </header>
 
-        <div class="info">
-            <h2>Ola, sou Luiz fernando</h2>
-            <h3>Developer <i class="fas fa-rocket"></i></h3>
-            <p>Crio sistemas web para otimizar as atividades da sua empresa e websites 
-            institucionais para promover a sua marca da internet, utilizando SEO para alavancar 
-            sua marca nas pesquisas.</p>
-            <a href="#" target="blank" class="btn">Fale Comigo <i class="fas fa-arrow-circle-right"></i></a>
+    <!-- Home -->
+    <section class="home flex-center" id="home">
+        <div class="home-container">
+            <div class="media-icons">
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+            </div>
+            <div class="info">
+                <h2>Ola, sou o Luiz,</h2>
+                <h3>Desenvolvedor <i class="fas fa-rocket"></i></h3>
+                <p> Eu crio websites impressionantes para o seu negócio e também 
+                aplicações para agilizar processos internos. (Esta página está em desenvolvimento, caso encontre algum bug ou erros
+                por favor me informe!)</p>
+                <a href="https://wa.me/qr/5VVPCBEPJMEYC1" target="blank" class="btn">Fale diretamente comigo <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+            <div class="home-img">
+                <img src="#" alt="">
+            </div>
         </div>
-
-        <div class="home-img">
-            <img src="#" alt="">
-        </div>
-
-        <a href="#sobre" class="scroll-down">Deslize para baixo <i class="fas fa-arrow-down"></i></a>
+        <a href="" class="scroll-down">Deslize para baixo<i class="fas fa-arrow-down"></i></a>
     </section>
 
-    <section class="about-section" id="about">
+
+    <!-- Sobre Section -->
+
+    <section class="about section" id="about">
         <div class="container flex-center">
             <h1 class="section-title-01">Sobre</h1>
             <h2 class="section-title-02">Sobre</h2>
             <div class="content flex-center">
                 <div class="about-img">
-                    <img src="" alt="">
+                    <img src="#" alt="">
                 </div>
                 <div class="about-info">
                     <div class="description">
-                        <h3>Eu me chamo Luiz,</h3>
-                        <h4>Sou desenvolvedor e Aluno <span>FULLSTACK</span>.</h4>
-                        <p>Minha principal área de atuação é projetos Web e ecommerce ou soluções Web utilizando
-                           python e django como minhas principais ferramentas de desenvolvimento. Confira um pouco do meu
-                           portifolio com alguns projetos que eu desenvolvi.
-                        </p>
-                    </div>
+                    <h3>Eu me chamo Luiz Fernando,</h3>
+                    <h4>Sou desenvolvedor<SPAN> Front-End</SPAN> e estou aprimorando também meus conhecimentos em <span>Back-End</span></h4>
+                    <p>Minha paixão é projetar e desenvolver websites, lojas online e serviços para clientes com um toque moderno e elegante. Estou aprendendo novas linguagues,
+                        para tornar a sua experiência ainda mais intuitiva e dinâmica. Confira meu portfólio.</p>
                 </div>
                 <ul class="professional-list">
-                    <li class="list-items">
-                        <h3>12+</h3>
-                        <span>Anos de experiencia em Tecnologia da Informação.</span>
+                    <li class="list-item">
+                        <h3>0</h3>
+                        <span>Anos de Experiência com Tecnologia da Informação, <br> como Analista de Suporte</span>
                     </li>
-                    <li class="list-items">
-                        <h3>3+</h3>
-                        <span>Anos de experiencia com programação</span>
+                    <li class="list-item">
+                        <h3>1</h3>
+                        <span>Ano de vivência com desenvolvimento web</span>
                     </li>
                 </ul>
-                <a href="" class="btn">Download C.V <i class="fas fa-download"></i></a>
+                <a href="./Lucas Guilherme Vieira da Silva.docx" class="btn">Download CV <i class="fas fa-download"></i></a>
             </div>
         </div>
     </section>
+
+
+    <!-- Habilidades Section -->
+    <section class="skills section" id="skills">
+        <div class="container flex-center">
+            <h1 class="section-title-01">Minhas Habilidades</h1>
+            <h2 class="section-title-02">Minhas Habilidades</h2>
+            <div class="content">
+                <div class="skills-description">
+                    <h3>Educação e Habilidades</h3>
+                    <p>No momento não tenho abilidades e nenhuma experiencia mas sou muito proativo e faço de tudo para termina a ultima linha do codigo e analizar o e acabar com o erro.</p>
+                </div>
+                <div class="skills-info education-all">
+                    <div class="education">
+                        <h4><label>Educação</label></h4>
+                        <ul class="edu-list">
+                            <li class="item">
+                                <span class="year">2026</span>
+                                <p><span>Curso Tec. em Desenv. de Sistemas</span>- Escola Sesi Planalto - Goiânia</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="education">
+                        <h4><label>Habilidades</label></h4>
+                        <ul class="bars">
+                            <li class="bar">
+                                <div class="info">
+                                    <span>HTML</span>
+                                    <span>70%</span>
+                                </div>
+                                <div class="line html"></div>
+                            </li>
+                            <li class="bar">
+                                <div class="info">
+                                    <span>CSS</span>
+                                    <span>60%</span>
+                                </div>
+                                <div class="line css"></div>
+                            </li>
+                            <li class="bar">
+                                <div class="info">
+                                    <span>JavaScript</span>
+                                    <span>20%</span>
+                                </div>
+                                <div class="line javascript"></div>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="skills-description">
+                    <h3>Trabalhos e Experiências</h3>
+                </div>
+                <div class="skills-info">
+                    <div class="experience-card">
+                        <div class="upper">
+                            <h3>Especialista em Marketing Digital</h3>
+                            <h5>2025-2026</h5>
+                            <span>Menor aprendiz</span>
+                        </div>
+                        <div class="hr"></div>
+                        <h4><label>Talentos do Agro</label></h4>
+                        <p>Especialista no desenvolvimento de soluções visuais, templates editáveis e artes funcionais para plataformas digitais. O trabalho consiste em traduzir os objetivos de comunicação em peças de alto impacto, desenhadas especificamente para reter a atenção da audiência, gerar interações e escalar o crescimento do perfil.</p>
+                    </div>
+                    
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Portfolio Section -->
+
+    <section class="portfolio section" id="portfolio">
+        <div class="container flex-center">
+            <h1 class="section-title-01">Meu Portfolio</h1>
+            <h2 class="section-title-02">Meu Portfolio</h2>
+            <div class="content">
+                <div class="portfolio-list">
+                    <div class="img-card-container1">
+                        <h1>Projeto 1</h1>
+                        <div class="img-card">
+                            <div class="info">
+                                <h3>Web Design</h3>
+                                <span></span>
+                                <a href="https://louisfacio01.github.io/PROJETO-DHTC/" class="btn">Veja</a>
+                            </div>
+                            <img src="logonaodefinida.png">
+                            
+                        </div>
+
+                    </div>
+
+                    <div class="img-card-container2">
+                        <h1>Projeto 2</h1>
+                        <div class="img-card">
+                            <div class="info">
+                                <h3>Web Design</h3>
+                                <span></span>
+                                <a href="https://louisfacio01.github.io/PROJETO-DHTC/" class="btn">Veja</a>
+                            </div>
+                            <img src="logonaodefinida.png">
+                            
+                        </div>
+                    </div>
+
+                        <div class="img-card-container3">
+                        <h1>Projeto 3</h1>
+                        <div class="img-card">
+                            <div class="info">
+                                <h3>Web Design</h3>
+                                <span></span>
+                                <a href="https://louisfacio01.github.io/PROJETO-DHTC/" class="btn">Veja</a>
+                            </div>
+                            <img src="logonaodefinida.png">
+                            
+                        </div>
+
+                    </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="./main.js"></script>
 </body>
+
 </html>
