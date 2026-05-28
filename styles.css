@@ -658,13 +658,13 @@ header.sticky .nav-bar {
 
 /* ==================== FUNDO PARTICULAS ==================== */
 #particles {
-    position: fixed;
+    position: fixed; /* Ou absolute, dependendo de como fez */
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1;
-    pointer-events: none;
+    z-index: -1; /* Garante que fique atrás do texto */
+    pointer-events: none; /* FAZ O MOUSE ATRAVESSAR O TEXTO E TOCAR NO CANVAS */
 }
 
 .home {
@@ -745,43 +745,45 @@ header.sticky .nav-bar {
 /* Celular - até 768px */
 @media screen and (max-width: 768px) {
     .home .home-container {
-        padding: 0 20px;
+        padding: 80px 20px 20px 20px; /* Adicionado padding-top para não cobrir o texto com os botões */
     }
 
     .home-container .info h2 {
-        font-size: 2.6rem;
-        line-height: 1.1;
+        font-size: 2.4rem; /* Reduzido levemente para não quebrar linha feio */
+        line-height: 1.2;
     }
 
     .home-container .info h3 {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
     }
 
     .home-container .info p {
-        font-size: 1rem;
+        font-size: 0.95rem;
         max-width: 100%;
     }
 
     .btn {
-        padding: 16px 28px;
-        font-size: 1rem;
+        padding: 14px 24px;
+        font-size: 0.95rem;
     }
 
     .media-icons {
         flex-direction: row;
         justify-content: center;
-        margin: 0 auto;
+        margin: 20px auto 0 auto; /* Ajustado margem superior */
         gap: 25px;
     }
 
+    /* Ajuste fixo para os botões de modo não quebrarem o layout */
     .mode-buttons {
-        position: absolute;
-        top: 15px;
-        left: 50%;
-        transform: translateX(-50%);
+        position: relative; /* Mudado de absolute para relative para respeitar o fluxo do topo */
+        top: 0;
+        left: 0;
+        transform: none;
+        margin: 20px auto;
         flex-direction: row;
-        gap: 6px;
-        width: 90%;
+        gap: 8px;
+        width: 100%;
         justify-content: center;
     }
 
@@ -789,24 +791,22 @@ header.sticky .nav-bar {
         padding: 8px 14px;
         font-size: 0.85rem;
     }
-
-    .scroll-down {
-        font-size: 0.95rem;
-    }
 }
 
 /* Celular pequeno - até 480px */
 @media screen and (max-width: 480px) {
     .home-container .info h2 {
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
 
     .mode-buttons {
-        flex-wrap: wrap;
-        gap: 8px;
+        flex-wrap: wrap; /* Permite que os botões quebrem linha caso a tela seja muito fina */
+        justify-content: center;
+        gap: 6px;
     }
 
     .mode-btn {
-        padding: 7px 12px;
+        padding: 6px 10px;
+        font-size: 0.8rem;
     }
 }
