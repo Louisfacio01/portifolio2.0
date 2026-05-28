@@ -4,13 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styleS.css">
+    <link rel="stylesheet" href="styles.css">
     <script src="https://kit.fontawesome.com/77b4ef7fc8.js" crossorigin="anonymous"></script>
     <title>LUIZ FERNANDO/PORTFOLIO</title>
 </head>
 <body>
-
-
     <!-- Header -->
     <header>
         <div class="nav-bar">
@@ -29,6 +27,15 @@
 
     <!-- Home -->
     <section class="home flex-center" id="home">
+
+        <!-- Botões de Troca de Fundo -->
+<div class="mode-buttons">
+    <button onclick="changeMode(1)" class="mode-btn active">Normal</button>
+    <button onclick="changeMode(2)" class="mode-btn">Teia Forte</button>
+    <button onclick="changeMode(3)" class="mode-btn">Ondas</button>
+</div>
+
+        <canvas id="particles"></canvas>
         <div class="home-container">
             <div class="media-icons">
                 <a href="#"><i class="fab fa-whatsapp"></i></a>
@@ -164,11 +171,11 @@
                         <h1>Projeto 1</h1>
                         <div class="img-card">
                             <div class="info">
-                                <h3>Web Design</h3>
+                                <h3>(SORP) Servidor de Organizações de RolePlays(EM DESENVOLVIMENTO)</h3>
                                 <span></span>
-                                <a href="https://louisfacio01.github.io/PROJETO-DHTC/" class="btn">Veja</a>
+                                <a href="https://louisfacio01.github.io/PROJETO-S.P.E.A.R/" class="btn">Veja</a>
                             </div>
-                            <img src="logonaodefinida.png">
+                            <img src="S.P.E.A.R">
                             
                         </div>
 
@@ -178,11 +185,11 @@
                         <h1>Projeto 2</h1>
                         <div class="img-card">
                             <div class="info">
-                                <h3>Web Design</h3>
+                                <h3>Site Sobre Feminicidio (Prototipo)</h3>
                                 <span></span>
-                                <a href="https://louisfacio01.github.io/PROJETO-DHTC/" class="btn">Veja</a>
+                                <a href="https://louisfacio01.github.io/PROJETO-CH-FEMINICIDIO/" class="btn">Veja</a>
                             </div>
-                            <img src="logonaodefinida.png">
+                            <img src="photo-1522202176988-66273c2fd55f.jpg">
                             
                         </div>
                     </div>
@@ -191,11 +198,11 @@
                         <h1>Projeto 3</h1>
                         <div class="img-card">
                             <div class="info">
-                                <h3>Web Design</h3>
+                                <h3>App de produtividade (EM DESENVOLVIMENTO)</h3>
                                 <span></span>
-                                <a href="https://louisfacio01.github.io/PROJETO-DHTC/" class="btn">Veja</a>
+                                <a href="https://github.com/Louisfacio01/projeto-produtividade" class="btn">Veja</a>
                             </div>
-                            <img src="logonaodefinida.png">
+                            <img src="ChatGPT Image 28 de mai. de 2026, 08_01_09.png">
                             
                         </div>
 
@@ -208,7 +215,14 @@
     </section>
 
 
-    <script src="./main.js"></script>
+    <script src="main.js"></script>
+
+    <div id="particles-js"></div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+
+
 </body>
 
 </html>

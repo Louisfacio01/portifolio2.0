@@ -54,7 +54,7 @@ html {
 
 body {
     color: var(--first-color);
-    background: var(--body-bg-color);
+    background: transparent;
     margin: 2rem 0 0 0;
     transition: .5s ease;
 }
@@ -114,6 +114,7 @@ header.sticky {
     margin-right: auto;
     padding: 0 20px;
     transition: .6s ease;
+    
 }
 
 header.sticky .nav-bar {
@@ -192,6 +193,10 @@ header.sticky .nav-bar {
     color: var(--third-color);
     font-size: var(--normal-font-size);
     max-width: 350px;
+}
+
+.info{
+    margin: 100px auto;
 }
 
 .btn {
@@ -528,7 +533,7 @@ header.sticky .nav-bar {
 }
 
 .portfolio-list .img-card {
-    position: 25%;
+    position: relative;
     max-width: 100%;
     background-color: black ;
     height: 360px;
@@ -650,4 +655,62 @@ header.sticky .nav-bar {
 
   /*=======Get-in-touch section=======*/
 }
-      
+
+/* ==================== FUNDO PARTICULAS ==================== */
+#particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.home {
+    position: relative;
+    overflow: hidden;
+}
+
+.home-container,
+.scroll-down {
+    position: relative;
+    z-index: 2;
+}
+
+/* Botões de Modo */
+.mode-buttons {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    z-index: 10;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.mode-btn {
+    padding: 10px 20px;
+    background: rgba(15, 23, 42, 0.85);
+    color: white;
+    border: 2px solid rgba(239, 68, 68, 0.3);
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    margin-top: 50px;
+}
+
+.mode-btn:hover {
+    background: #ef4444;
+    border-color: #ef4444;
+    transform: translateY(-2px);
+}
+
+.mode-btn.active {
+    background: #ef4444;
+    border-color: #ef4444;
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
+}
