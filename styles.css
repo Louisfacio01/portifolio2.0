@@ -715,3 +715,98 @@ header.sticky .nav-bar {
     box-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
 
 }
+
+/* ==================== RESPONSIVO ==================== */
+
+@media screen and (max-width: 1024px) {
+    .home-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+    }
+
+    .home-container .info h2 {
+        font-size: 3.2rem;
+    }
+
+    .mode-buttons {
+        top: 20px;
+        right: 20px;
+        flex-direction: row;
+        gap: 8px;
+    }
+
+    .mode-btn {
+        padding: 9px 16px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Celular - até 768px */
+@media screen and (max-width: 768px) {
+    .home .home-container {
+        padding: 0 20px;
+    }
+
+    .home-container .info h2 {
+        font-size: 2.6rem;
+        line-height: 1.1;
+    }
+
+    .home-container .info h3 {
+        font-size: 1.4rem;
+    }
+
+    .home-container .info p {
+        font-size: 1rem;
+        max-width: 100%;
+    }
+
+    .btn {
+        padding: 16px 28px;
+        font-size: 1rem;
+    }
+
+    .media-icons {
+        flex-direction: row;
+        justify-content: center;
+        margin: 0 auto;
+        gap: 25px;
+    }
+
+    .mode-buttons {
+        position: absolute;
+        top: 15px;
+        left: 50%;
+        transform: translateX(-50%);
+        flex-direction: row;
+        gap: 6px;
+        width: 90%;
+        justify-content: center;
+    }
+
+    .mode-btn {
+        padding: 8px 14px;
+        font-size: 0.85rem;
+    }
+
+    .scroll-down {
+        font-size: 0.95rem;
+    }
+}
+
+/* Celular pequeno - até 480px */
+@media screen and (max-width: 480px) {
+    .home-container .info h2 {
+        font-size: 2.2rem;
+    }
+
+    .mode-buttons {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .mode-btn {
+        padding: 7px 12px;
+    }
+}
