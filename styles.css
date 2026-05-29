@@ -160,20 +160,176 @@ header.sticky .nav-bar {
     width: 100%;
 }
 
-.home-container .media-icons {
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root{
+  /*=======Main theme colors=======*/
+    --first-color: #0e2431;
+    --second-color: #ff0000;
+    --third-color: #777;
+
+  /*=======Hover colors=======*/
+  --hover-color: #ff0000;
+
+  /*=======Background colors=======*/
+    --body-bg-color: #fefefe;
+    --card-bg-color: #fff;
+    --modal-bg-color: #fff;
+    --bg-transparent-color: rgba(0,0,0, 0.1);
+    --transparent-color-01: rgba(0,0,0, 0.1);
+    --transparent-color-02: rgba(106, 89, 209, 0.1);
+    --line-color: #d7d7d7;
+
+  /*=======Color Filter=======*/
+  --color-filter: invert(1);
+
+  /*=======Box shadow=======*/
+    --box-shadow: 0px 0px 20px rgba(0 0 0 / 10%);
+
+  /*=======Font size=======*/
+  --small-font-size: 0.9em;
+  --normal-font-size: 1em;
+
+  /*=======Scroll bar colors=======*/
+    --scroll-bar-color: #c5cadf;
+    --scroll-thumb-color: #70768a;
+    --scroll-thum-hover-color: #454f6b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    color: var(--first-color);
+    background: transparent;
+    margin: 2rem 0 0 0;
+    transition: .5s ease;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+/*=======Scroll bar=======*/
+::-webkit-scrollbar {
+    width: 10px;
+    background: var(--scroll-bar-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--scroll-thumb-color);
+    border-radius: 2em;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--scroll-thumb-hover-color);
+}
+
+/*=======Header=======*/
+header {
+    z-index: 999999;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(20px);
+    transition: .6s ease;
+}
+
+header.sticky {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: var(--box-shadow); 
+}
+
+.nav-bar {
+    position: relative;
+    height: calc(4rem + 1rem);
+    max-width: 1250px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+    transition: .6s ease;
+}
+
+header.sticky .nav-bar {
+    height: calc(2.5rem + 1rem);
+}
+
+.nav-bar .logo {
+    color: var(--first-color);
+    font-size: 1.3em;
+    font-weight: 600;
+}
+
+.nav-items a {
+    color: var(--first-color);
+    font-size: var(--normal-font-size);
+    font-weight: 500;
+}
+
+.nav-items a:not(:last-child) {
+    margin-right: 50px;
+}
+
+.nav-items a:hover {
+    color: var(--second-color);
+}
+
+/*=======Home section=======*/
+.home {
+    position: relative;
+    max-width: 1250px;
+    min-height: 100vh;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 4rem 2rem;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.home .home-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+/* --- Ícones de Mídia (Desktop Base) --- */
+.media-icons {
     display: flex;
     flex-direction: column;
     margin-right: 40px;   
+    z-index: 100;
 }
 
-.home-container .media-icons a {
+.media-icons a {
     color: var(--second-color);
     font-size: 1.5em;
     margin: 10px 0;
+    transition: 0.3s;
 }
 
-.home-container .media-icons a:hover {
+.media-icons a:hover {
     color: var(--hover-color);
+    transform: scale(1.1);
 }
 
 .home-container .info h2 {
@@ -184,7 +340,7 @@ header.sticky .nav-bar {
 
 .home-container .info h3 {
     color: var(--third-color);
-    font-feature-settings: 1.3em;
+    font-size: 1.3em;
     font-weight: 600;
     line-height: 50px;
 }
@@ -195,7 +351,7 @@ header.sticky .nav-bar {
     max-width: 350px;
 }
 
-.info{
+.info {
     margin: 100px auto;
 }
 
@@ -209,6 +365,7 @@ header.sticky .nav-bar {
     padding: 20px 30px;
     letter-spacing: 1px;
     border-radius: 10px;
+    transition: 0.3s;
 }
 
 .btn:hover {
@@ -229,6 +386,8 @@ header.sticky .nav-bar {
     font-size: var(--normal-font-size);
     font-weight: 500;
     margin-top: 20px;
+    position: relative;
+    z-index: 2;
 }
 
 .home .scroll-down i {
@@ -238,16 +397,11 @@ header.sticky .nav-bar {
 }
 
 @keyframes arrow-down {
-    0% {
-        transform: translateY(0);
-    }
-    30% {
-        transform: translateY(10px);
-    }
+    0% { transform: translateY(0); }
+    30% { transform: translateY(10px); }
 }
 
 /*=======Estilos comuns para todas sessões=======*/
-
 .flex-center {
     display: flex;
     justify-content: center;
@@ -275,7 +429,7 @@ header.sticky .nav-bar {
     margin-bottom: 2rem;
     background: linear-gradient(to top, transparent 0%, var(--first-color) 70%);
     -webkit-background-clip: text;
-            background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     opacity: .1;
 }
@@ -291,7 +445,7 @@ header.sticky .nav-bar {
     position: absolute;
     width: 70px;
     height: 5px;
-    right: 10;
+    right: 10px;
     bottom: 0;
     background: var(--second-color);
 }
@@ -302,7 +456,6 @@ header.sticky .nav-bar {
 }
 
 /*=======Seção SOBRE=======*/
-
 .about .container .content {
     column-gap: 40px;
     width: 100%;
@@ -362,7 +515,6 @@ header.sticky .nav-bar {
 }
 
 /*=======Skills section=======*/
-
 .skills .container .content {
     width: 100%;
 }
@@ -468,16 +620,9 @@ header.sticky .nav-bar {
     width: 95%;
 }
 
-.bar .html:before {
-    width: 70%;
-}
-
-.bar .css:before {
-    width: 60%;
-}
-.bar .javascript:before {
-    width: 20%;
-}
+.bar .html:before { width: 70%; }
+.bar .css:before { width: 60%; }
+.bar .javascript:before { width: 20%; }
 
 .experience-card {
     background: var(--card-bg-color);
@@ -488,41 +633,18 @@ header.sticky .nav-bar {
     transition: .3s ease;
 }
 
-.experience-card .upper {
-    line-height: 30px;
-}
-
-.experience-card h3 {
-    font-size: 1.3em;
-    font-weight: 700;
-}
-
-.experience-card h5 {
-    font-size: var(--small-font-size);
-    font-weight: 500;
-    font-style: italic;
-}
-
-.experience-card span {
-    color: var(--third-color);
-}
-
-.experience-card .hr {
-    width: 100%;
-    height: 2px;
-    background: var(--line-color);
-    margin: 10px 0 22px;
-}
+.experience-card .upper { line-height: 30px; }
+.experience-card h3 { font-size: 1.3em; font-weight: 700; }
+.experience-card h5 { font-size: var(--small-font-size); font-weight: 500; font-style: italic; }
+.experience-card span { color: var(--third-color); }
+.experience-card .hr { width: 100%; height: 2px; background: var(--line-color); margin: 10px 0 22px; }
 
 .edu-list .item:hover, .bar:hover, .experience-card:hover {
     transform: scale(1.03);
 }
 
 /*=======Portfolio section=======*/
-.portfolio .container .content {
-    width: 100%;
-}
-
+.portfolio .container .content { width: 100%; }
 
 .portfolio-list {
     display: grid;
@@ -535,7 +657,7 @@ header.sticky .nav-bar {
 .portfolio-list .img-card {
     position: relative;
     max-width: 100%;
-    background-color: black ;
+    background-color: black;
     height: 360px;
     border-radius: 10px;
     box-shadow: var(--box-shadow);
@@ -543,10 +665,7 @@ header.sticky .nav-bar {
     cursor: pointer;
 }
 
-.portfolio-list .img-card .overlay {
-    transition: 1s ease;
-}
-
+.portfolio-list .img-card .overlay { transition: 1s ease; }
 .portfolio-list .img-card:hover .overlay {
     z-index: 777;
     position: absolute;
@@ -572,16 +691,8 @@ header.sticky .nav-bar {
     opacity: 1;
 }
 
-.portfolio-list .img-card .info span {
-    font-size: 1.2em;
-}
-
-.portfolio-list .img-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
+.portfolio-list .img-card .info span { font-size: 1.2em; }
+.portfolio-list .img-card img { width: 100%; height: 100%; object-fit: cover; }
 
 .portfolio-model {
     z-index: 999999;
@@ -602,6 +713,7 @@ header.sticky .nav-bar {
     padding: 40px;
     border-radius: 10px;
     box-shadow: var(--box-shadow);
+    font-size: 1em;
 }
 
 .position-close-btn {
@@ -612,70 +724,21 @@ header.sticky .nav-bar {
     cursor: pointer;
 }
 
-.portfolio-model-body {
-    font-size: 1em;
-}
-
 .portfolio-model-body img {
     width: 100%;
     margin: 20px 0;
     border-radius: 10px;
 }
 
-/*=======Get-in-touct=======*/
-
-/*=======Our Clients=======*/
-
-/*=======Contact section=======*/
-
-/*=======Footer=======*/
-
-/*=======Media query max-width 1070px=======*/
-@media screen and (max-width: 1070px){
-  /*=======Header navigation menu=======*/
-
-  /*=======Home section=======*/
-
-  /*=======About section=======*/
-
-  /*=======Get-in-touct=======*/
-
-  /*=======Our clients=======*/
-
-  /*=======Contact section=======*/
-
-  /*=======Footer=======*/
-}
-
-/*=======Media query max-width 730px=======*/
-@media screen and (max-width: 730px){
-  /*=======Common styles for all sections=======*/
-
-  /*=======Home section=======*/
-
-  /*=======Get-in-touch section=======*/
-}
-
 /* ==================== FUNDO PARTICULAS ==================== */
 #particles {
-    position: fixed; /* Ou absolute, dependendo de como fez */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* Garante que fique atrás do texto */
-    pointer-events: none; /* FAZ O MOUSE ATRAVESSAR O TEXTO E TOCAR NO CANVAS */
-}
-
-.home {
-    position: relative;
-    overflow: hidden;
-}
-
-.home-container,
-.scroll-down {
-    position: relative;
-    z-index: 2;
+    z-index: -1;
+    pointer-events: none;
 }
 
 /* Botões de Modo */
@@ -700,7 +763,6 @@ header.sticky .nav-bar {
     font-weight: 500;
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
-    margin-top: 50px;
 }
 
 .mode-btn:hover {
@@ -713,10 +775,9 @@ header.sticky .nav-bar {
     background: #ef4444;
     border-color: #ef4444;
     box-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
-
 }
 
-/* ==================== RESPONSIVO ==================== */
+/* ==================== MEDIA QUERIES (RESPONSIVO TOTAL) ==================== */
 
 @media screen and (max-width: 1024px) {
     .home-container {
@@ -745,11 +806,13 @@ header.sticky .nav-bar {
 /* Celular - até 768px */
 @media screen and (max-width: 768px) {
     .home .home-container {
-        padding: 80px 20px 20px 20px; /* Adicionado padding-top para não cobrir o texto com os botões */
+        padding: 100px 20px 20px 20px;
+        flex-direction: column;
+        text-align: center;
     }
 
     .home-container .info h2 {
-        font-size: 2.4rem; /* Reduzido levemente para não quebrar linha feio */
+        font-size: 2.4rem;
         line-height: 1.2;
     }
 
@@ -760,6 +823,7 @@ header.sticky .nav-bar {
     .home-container .info p {
         font-size: 0.95rem;
         max-width: 100%;
+        margin: 0 auto;
     }
 
     .btn {
@@ -767,59 +831,32 @@ header.sticky .nav-bar {
         font-size: 0.95rem;
     }
 
-/* ==================== BOTÕES SOCIAIS E WHATSAPP ==================== */
-
-/* Estilo padrão para Desktop (Fica na lateral esquerda) */
-.media-icons {
-    position: fixed;
-    bottom: 40px; /* Joga eles mais para baixo na tela */
-    left: 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    z-index: 100; /* Garante que fiquem na frente de tudo */
-}
-
-.media-icons a {
-    color: #f87171; /* Cor vermelha do seu tema */
-    font-size: 25px;
-    transition: 0.3s;
-}
-
-.media-icons a:hover {
-    transform: scale(1.1);
-}
-
-/* ==================== CORREÇÃO PARA CELULAR (ATÉ 768px) ==================== */
-@media screen and (max-width: 768px) {
+    /* FORÇA OS ÍCONES SOCIAIS E WHATSAPP A FICAREM LADO A LADO */
+    .home-container .media-icons, 
     .media-icons {
-        position: relative; /* Sai da lateral e entra no fluxo do site */
-        bottom: 0;
-        left: 0;
-        flex-direction: row; /* Ficam um do lado do outro */
-        justify-content: center; /* Centraliza na tela do celular */
-        margin: 30px auto; /* Dá espaço do texto e centraliza */
-        gap: 30px; /* Dá espaço bom para clicar com o dedo */
-        width: 100%;
+        position: relative !important;
+        flex-direction: row !important; /* Lado a lado */
+        justify-content: center !important;
+        margin: 30px auto !important;
+        gap: 30px !important;
+        width: 100% !important;
     }
 
+    .home-container .media-icons a, 
     .media-icons a {
-        font-size: 30px; /* Aumenta um pouco o ícone no celular pra facilitar o clique */
+        font-size: 32px !important; /* Tamanho confortável para toque */
+        margin: 0 !important;
     }
-}
 
-    /* Ajuste fixo para os botões de modo não quebrarem o layout */
+    /* Ajuste para os botões de modo ficarem centralizados no topo */
     .mode-buttons {
-        position: relative; /* Mudado de absolute para relative para respeitar o fluxo do topo */
-        display: inline-flex;
-        top: 0;
-        left: 0;
-        transform: none;
-        margin: 20px auto;
-        flex-direction: row;
-        gap: 8px;
-        width: 100%;
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
         justify-content: center;
+        gap: 8px;
     }
 
     .mode-btn {
@@ -835,7 +872,7 @@ header.sticky .nav-bar {
     }
 
     .mode-buttons {
-        flex-wrap: wrap; /* Permite que os botões quebrem linha caso a tela seja muito fina */
+        flex-wrap: wrap;
         justify-content: center;
         gap: 6px;
     }
@@ -843,5 +880,10 @@ header.sticky .nav-bar {
     .mode-btn {
         padding: 6px 10px;
         font-size: 0.8rem;
+    }
+    
+    .home-container .media-icons, 
+    .media-icons {
+        gap: 20px !important;
     }
 }
