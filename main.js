@@ -1,4 +1,4 @@
-// ==================== EQUILÍBRIO: INTERAÇÃO + PERFORMANCE RESPONSIVA ====================
+// ==================== EQUILÍBRIO: INTERAÇÃO FIXA EM TODO O SITE ====================
 
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -12,16 +12,15 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentMode = 1;
     let count = 0; 
 
-    // Estrutura para salvar a posição do mouse (Efeito Teia)
+    // --- CONFIGURAÇÃO DO MOUSE (SINCRENISMO COM O VIEWPORT) ---
     const mouse = {
         x: null,
         y: null,
-        radius: 500 // Área de alcance magnético do mouse
+        radius: 250 // Alcance do imã das partículas
     };
 
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-    // Variáveis dinâmicas da grade de ondas
     let numCols = isMobile ? 28 : 65; 
     let numRows = isMobile ? 16 : 32; 
 
@@ -29,21 +28,19 @@ document.addEventListener('DOMContentLoaded', function() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
         
-        // Ajusta a densidade de pontos no celular para não travar a tela
         const checkMobile = window.innerWidth <= 768;
         numCols = checkMobile ? 26 : 65; 
         numRows = checkMobile ? 15 : 32;
 
-        // Recria os arrays com os novos tamanhos de tela
         initParticles();
     }
 
-    // --- MODO 1: PARTÍCULAS TRADICIONAIS (CONSTELAÇÃO) ---
+    // --- MODO 1: PARTÍCULAS TRADICIONAIS ---
     class Particle {
         constructor() {
             this.x = Math.random() * canvas.width;
             this.y = Math.random() * canvas.height;
-            this.size = Math.random() * 2.1 + 0.6;
+            this.size = Math.random() * 2.5 + 1.0;
             this.speedX = Math.random() * 0.4 - 0.2;
             this.speedY = Math.random() * 0.4 - 0.2;
         }
@@ -63,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // --- MODO 2: GRADE DE PONTOS EM ONDA 3D (DOTS) ---
+    // --- MODO 2: GRADE DE PONTOS EM ONDA 3D ---
     class GridPoint {
         constructor(col, row) {
             this.col = col;
@@ -78,13 +75,22 @@ document.addEventListener('DOMContentLoaded', function() {
             const baseX = this.col * spacingX;
             const baseY = (canvas.height * 0.15) + (this.row * spacingY);
 
-            // Algoritmo matemático da ondulação fluida
             const wave1 = Math.sin(this.col * 0.15 + count);
             const wave2 = Math.cos(this.row * 0.15 + count);
-            const zEffect = wave1 + wave2; 
+            let zEffect = wave1 + wave2; 
 
-            const amplitude = isMobile ? 20 : 40;
-            const y = baseY + (zEffect * amplitude);
+            let amplitude = isMobile ? 20 : 40;
+            let y = baseY + (zEffect * amplitude);
+
+            // Interação corrigida do mouse com a onda (Modo 2) ao longo do scroll
+            if (mouse.x !== null && mouse.y !== null) {
+                const dxMouse = baseX - mouse.x;
+                const dyMouse = y - mouse.y;
+                const distMouse = Math.hypot(dxMouse, dyMouse);
+                if (distMouse < 180) {
+                    y += (180 - distMouse) * 0.15;
+                }
+            }
 
             const sizeModifier = (zEffect + 2) / 4; 
             const size = this.baseSize * (0.5 + sizeModifier * 1.2);
@@ -96,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // --- MODO 3: GOTAS D'ÁGUA (RIPPLES) ---
+    // --- MODO 3: GOTAS D'ÁGUA ---
     class Ripple {
         constructor(x, y) {
             this.x = x;
@@ -120,7 +126,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // --- INICIALIZADOR DE ELEMENTOS ---
     function initParticles() {
         particlesArray = [];
         pointsArray = [];
@@ -129,12 +134,10 @@ document.addEventListener('DOMContentLoaded', function() {
             (canvas.width * canvas.height) / 13500 : 
             (canvas.width * canvas.height) / 7200;
         
-        // Carrega as partículas normais (Modo 1)
         for (let i = 0; i < density; i++) {
             particlesArray.push(new Particle());
         }
 
-        // Carrega a grade estruturada de ondas (Modo 2)
         for (let col = 0; col < numCols; col++) {
             for (let row = 0; row < numRows; row++) {
                 pointsArray.push(new GridPoint(col, row));
@@ -142,7 +145,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // --- SISTEMA DE CONEXÃO E RASTRO DO MOUSE (MODO 1) ---
+    // --- LIGAÇÃO COM O MOUSE (CORRIGIDO PARA TODO O SITE) ---
     function connectParticles() {
         if (currentMode !== 1) return;
 
@@ -150,15 +153,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
         for (let a = 0; a < particlesArray.length; a++) {
             
-            // LIGAÇÃO INTERATIVA COM O CURSOR DO MOUSE
             if (mouse.x !== null && mouse.y !== null) {
                 const dxMouse = particlesArray[a].x - mouse.x;
                 const dyMouse = particlesArray[a].y - mouse.y;
                 const distMouse = Math.hypot(dxMouse, dyMouse);
 
                 if (distMouse < mouse.radius) {
-                    ctx.strokeStyle = `rgba(248, 113, 113, ${0.45 - distMouse / mouse.radius})`;
-                    ctx.lineWidth = 1.3;
+                    const calculatedOpacity = 0.85 - (distMouse / mouse.radius);
+                    ctx.strokeStyle = `rgba(248, 113, 113, ${calculatedOpacity})`;
+                    ctx.lineWidth = isMobile ? 1.2 : 1.8; 
                     ctx.beginPath();
                     ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
                     ctx.lineTo(mouse.x, mouse.y);
@@ -166,7 +169,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
 
-            // Ligações normais entre as partículas soltas
             for (let b = a + 1; b < particlesArray.length; b += 2) {
                 const dx = particlesArray[a].x - particlesArray[b].x;
                 const dy = particlesArray[a].y - particlesArray[b].y;
@@ -185,12 +187,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // --- LOOP PRINCIPAL DE ANIMAÇÃO ---
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         if (currentMode === 1) {
-            // Modo Normal: Constelação clássica ligada ao cursor
             particlesArray.forEach(p => {
                 p.update();
                 p.draw();
@@ -198,14 +198,12 @@ document.addEventListener('DOMContentLoaded', function() {
             connectParticles();
         } 
         else if (currentMode === 2) {
-            // Modo Partículas: Malha de ondas estilo Dots
             count += 0.025; 
             pointsArray.forEach(point => {
                 point.draw();
             });
         } 
         else if (currentMode === 3) {
-            // Modo Gotas: Impactos circulares na tela
             if (Math.random() < (isMobile ? 0.09 : 0.17)) {
                 ripples.push(new Ripple(Math.random() * canvas.width, Math.random() * canvas.height * 0.65));
             }
@@ -220,24 +218,20 @@ document.addEventListener('DOMContentLoaded', function() {
         requestAnimationFrame(animate);
     }
 
-    // --- CAPTURA DE MOVIMENTOS GLOBAIS DO DOCUMENTO ---
+    // --- ALTERAÇÃO CHAVE: Usar clientX e clientY ignora a rolagem da página ---
     document.addEventListener('mousemove', function(event) {
-        // Coleta coordenadas exatas considerando possíveis rolagens (scroll)
-        mouse.x = event.pageX;
-        mouse.y = event.pageY;
-
+        mouse.x = event.clientX;
+        mouse.y = event.clientY;
     });
 
     document.addEventListener('mouseleave', function() {
-        // Remove as linhas se o ponteiro sair do navegador
         mouse.x = null;
         mouse.y = null;
     });
 
-    // --- GERENCIADOR DE MODOS DOS BOTÕES ---
     window.changeMode = function(mode) {
         currentMode = mode;
-        ripples = []; // Limpa gotas residuais ao trocar de tela
+        ripples = []; 
 
         document.querySelectorAll('.mode-btn').forEach(btn => {
             btn.classList.remove('active');
@@ -249,7 +243,6 @@ document.addEventListener('DOMContentLoaded', function() {
         resizeCanvas();
     });
 
-    // Execução inicial do sistema
     resizeCanvas();
     animate();
 });

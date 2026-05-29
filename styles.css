@@ -680,8 +680,8 @@ header.sticky .nav-bar {
 
 /* Botões de Modo */
 .mode-buttons {
-    position: absolute;
-    top: 25px;
+    position: fixed;
+    top: 50px;
     right: 30px;
     z-index: 10;
     display: flex;
@@ -767,16 +767,51 @@ header.sticky .nav-bar {
         font-size: 0.95rem;
     }
 
+/* ==================== BOTÕES SOCIAIS E WHATSAPP ==================== */
+
+/* Estilo padrão para Desktop (Fica na lateral esquerda) */
+.media-icons {
+    position: fixed;
+    bottom: 40px; /* Joga eles mais para baixo na tela */
+    left: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 100; /* Garante que fiquem na frente de tudo */
+}
+
+.media-icons a {
+    color: #f87171; /* Cor vermelha do seu tema */
+    font-size: 25px;
+    transition: 0.3s;
+}
+
+.media-icons a:hover {
+    transform: scale(1.1);
+}
+
+/* ==================== CORREÇÃO PARA CELULAR (ATÉ 768px) ==================== */
+@media screen and (max-width: 768px) {
     .media-icons {
-        flex-direction: row;
-        justify-content: center;
-        margin: 20px auto 0 auto; /* Ajustado margem superior */
-        gap: 25px;
+        position: relative; /* Sai da lateral e entra no fluxo do site */
+        bottom: 0;
+        left: 0;
+        flex-direction: row; /* Ficam um do lado do outro */
+        justify-content: center; /* Centraliza na tela do celular */
+        margin: 30px auto; /* Dá espaço do texto e centraliza */
+        gap: 30px; /* Dá espaço bom para clicar com o dedo */
+        width: 100%;
     }
+
+    .media-icons a {
+        font-size: 30px; /* Aumenta um pouco o ícone no celular pra facilitar o clique */
+    }
+}
 
     /* Ajuste fixo para os botões de modo não quebrarem o layout */
     .mode-buttons {
         position: relative; /* Mudado de absolute para relative para respeitar o fluxo do topo */
+        display: inline-flex;
         top: 0;
         left: 0;
         transform: none;
