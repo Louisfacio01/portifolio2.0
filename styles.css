@@ -127,10 +127,18 @@ header.sticky .nav-bar {
     font-weight: 600;
 }
 
+/* Links em estado normal (Preto/Cor padrão do site) */
 .nav-items a {
-    color: var(--first-color);
+    color: var(--first-color); /* Mantém a cor escura padrão do PC */
     font-size: var(--normal-font-size);
     font-weight: 500;
+    transition: 0.3s ease;
+}
+
+/* APENAS o link ativo (onde o scroll ou o clique está) fica vermelho */
+.nav-items a.active {
+    color: var(--second-color) !important;
+    font-weight: 700 !important;
 }
 
 .nav-items a:not(:last-child) {
@@ -886,5 +894,102 @@ header.sticky .nav-bar {
 
     .home-container .media-icons {
         gap: 20px !important;
+    }
+}
+
+/* ==================== CORREÇÃO DE LARGURA DA TELA (768px) ==================== */
+@media screen and (max-width: 768px) {
+    
+    /* Reseta a largura máxima de todas as seções para caber no celular */
+    .home, .section, .sub-section {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important; /* Destrava os 500px/1150px fixos */
+        padding: 80px 20px 40px 20px !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    /* Ajusta o container interno */
+    .home .home-container {
+        width: 100% !important;
+        flex-direction: column !important;
+        text-align: center !important;
+        padding: 0 !important;
+    }
+
+    /* Destrava a largura do texto para ele quebrar linha normal */
+    .home-container .info p {
+        max-width: 100% !important;
+        font-size: 0.95rem !important;
+    }
+
+    /* Corrige a seção SOBRE que também tem imagem travada */
+    .about-img img {
+        min-width: 0 !important; /* Destrava os 500px fixos da linha 196 */
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    .about .container .content {
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+}
+
+/* ==================== REMÉDIO SANTO PARA AJUSTAR O TOPO E MENU (768px) ==================== */
+@media screen and (max-width: 768px) {
+
+    /* 1. CORREÇÃO DO MENU DO TOPO (Para não amassar o texto) */
+    header .nav-bar {
+        height: auto !important;
+        flex-direction: column !important; /* Coloca sua logo em cima e os links embaixo */
+        padding: 15px 10px !important;
+        gap: 10px !important;
+        background: rgba(255, 255, 255, 0.95) !important; /* Fundo sólido para não ler o texto por trás */
+        box-shadow: var(--box-shadow) !important;
+    }
+
+    /* Ajusta o espaçamento dos links do menu no celular */
+    header .nav-items {
+        display: flex !important;
+        flex-wrap: wrap !important; /* Se não couber, quebra linha bonitinho */
+        justify-content: center !important;
+        gap: 15px !important; /* Espaço controlado entre os links */
+    }
+
+    header .nav-items a {
+        font-size: 0.85rem !important; /* Diminui a fonte do menu para caber em telas finas */
+        margin-right: 0 !important; /* Zera os 500px de margem do PC */
+    }
+
+    /* 2. DA ESPAÇO PARA O TEXTO NÃO FICAR EMBAIXO DO MENU */
+    .home {
+        padding-top: 140px !important; /* Empurra o "Olá, sou o Luiz" para baixo do novo menu */
+    }
+
+    /* 3. CORREÇÃO DOS TÍTULOS GIGANTES DAS SEÇÕES (SOBRE E HABILIDADES) */
+    .section-title-01 {
+        font-size: 2.8em !important; /* Diminui drasticamente o texto decorativo cinza de fundo */
+        margin-bottom: 0.5rem !important;
+        text-align: center !important;
+    }
+
+    .section-title-02 {
+        font-size: 1.8em !important; /* Diminui o título principal preto */
+        transform: translateY(0) !important; /* Remove o -80px que jogava o título pra cima do texto anterior */
+        text-align: center !important;
+        margin-bottom: 30px !important;
+    }
+
+    .section-title-02:before {
+        left: 50% !important;
+        transform: translateX(-50%) !important; /* Centraliza a barrinha vermelha embaixo do título */
+    }
+
+    /* Dá um respiro saudável entre o final de uma seção e o começo da outra */
+    .section, .sub-section {
+        padding-top: 60px !important;
+        padding-bottom: 60px !important;
     }
 }

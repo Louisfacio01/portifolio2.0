@@ -11,6 +11,40 @@ document.addEventListener('DOMContentLoaded', function() {
     let ripples = [];
     let currentMode = 1;
     let count = 0; 
+    let homeprimary
+
+
+    // Seleciona todas as seções que têm um ID (home, sobre, habilidades, etc)
+const trackingSections = document.querySelectorAll("section[id]");
+
+// Configura o "vigia" (Observer)
+const sectionVigia = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        // Pega o ID da seção atual (ex: "about")
+        const idSeção = entry.target.getAttribute("id");
+        // Acha o link correspondente no menu de navegação (ex: a[href="#about"])
+        const linkMenu = document.querySelector(`.nav-items a[href*=${idSeção}]`);
+
+        if (linkMenu) {
+            if (entry.isIntersecting) {
+                // Se a seção apareceu na tela, adiciona a classe "active" no link dela
+                linkMenu.classList.add("active");
+            } else {
+                // Se a seção sumiu da tela, remove a classe "active"
+                linkMenu.classList.remove("active");
+            }
+        }
+    });
+}, {
+    // Define que a seção precisa ocupar pelo menos 50% da tela para ativar o menu
+    rootMargin: "-30% 0px -50% 0px" 
+});
+
+// Manda o vigia observar cada uma das seções
+trackingSections.forEach(section => {
+    sectionVigia.observe(section);
+});
+
 
     // --- CONFIGURAÇÃO DO MOUSE (SINCRENISMO COM O VIEWPORT) ---
     const mouse = {
@@ -246,3 +280,4 @@ document.addEventListener('DOMContentLoaded', function() {
     resizeCanvas();
     animate();
 });
+
