@@ -777,8 +777,7 @@ header.sticky .nav-bar {
     box-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
 }
 
-/* ==================== MEDIA QUERIES (RESPONSIVO TOTAL) ==================== */
-
+/* ==================== RESPONSIVO IPAD / TABLET (1024px) ==================== */
 @media screen and (max-width: 1024px) {
     .home-container {
         flex-direction: column;
@@ -803,87 +802,89 @@ header.sticky .nav-bar {
     }
 }
 
-/* Celular - até 768px */
+/* ==================== RESPONSIVO CELULAR (768px) ==================== */
 @media screen and (max-width: 768px) {
-    .home .home-container {
-        padding: 100px 20px 20px 20px;
-        flex-direction: column;
-        text-align: center;
+    /* Ajusta a seção home para não sumir no celular */
+    .home {
+        width: 100% !important;
+        min-height: auto !important;
+        padding: 2rem 1rem !important;
     }
 
+    .home .home-container {
+        padding: 120px 10px 20px 10px !important;
+        flex-direction: column !important;
+        text-align: center !important;
+        width: 100% !important;
+    }
+
+    /* Reduz o título gigante do PC para caber na tela do celular */
     .home-container .info h2 {
-        font-size: 2.4rem;
-        line-height: 1.2;
+        font-size: 2.2rem !important;
+        line-height: 1.2 !important;
     }
 
     .home-container .info h3 {
-        font-size: 1.3rem;
+        font-size: 1.2rem !important;
+        line-height: 1.4 !important;
     }
 
     .home-container .info p {
-        font-size: 0.95rem;
-        max-width: 100%;
-        margin: 0 auto;
+        font-size: 0.95rem !important;
+        max-width: 100% !important;
+        margin: 15px auto !important;
     }
 
     .btn {
-        padding: 14px 24px;
-        font-size: 0.95rem;
+        padding: 14px 24px !important;
+        font-size: 0.95rem !important;
     }
 
-    /* FORÇA OS ÍCONES SOCIAIS E WHATSAPP A FICAREM LADO A LADO */
-    .home-container .media-icons, 
-    .media-icons {
-        position: relative !important;
-        flex-direction: row !important; /* Lado a lado */
+    /* Imagem de perfil responsiva */
+    .home-container .home-img img {
+        width: 75% !important;
+        margin: 0 auto !important;
+    }
+
+    /* ÍCONES SOCIAIS ALINHADOS PERFEITAMENTE */
+    .home-container .media-icons {
+        display: flex !important;
+        flex-direction: row !important;
         justify-content: center !important;
         margin: 30px auto !important;
         gap: 30px !important;
         width: 100% !important;
     }
 
-    .home-container .media-icons a, 
-    .media-icons a {
-        font-size: 32px !important; /* Tamanho confortável para toque */
+    .home-container .media-icons a {
+        font-size: 32px !important;
         margin: 0 !important;
     }
 
-    /* Ajuste para os botões de modo ficarem centralizados no topo */
+    /* Ajuste dos botões vermelhos de modo lá no topo */
     .mode-buttons {
-        position: absolute;
-        top: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 90%;
-        justify-content: center;
-        gap: 8px;
+        position: absolute !important;
+        top: 20px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: 95% !important;
+        justify-content: center !important;
+        gap: 6px !important;
     }
 
     .mode-btn {
-        padding: 8px 14px;
-        font-size: 0.85rem;
+        padding: 6px 12px !important;
+        font-size: 0.8rem !important;
     }
 }
 
-/* Celular pequeno - até 480px */
+/* ==================== CELULARES PEQUENOS (480px) ==================== */
 @media screen and (max-width: 480px) {
     .home-container .info h2 {
-        font-size: 2rem;
+        font-size: 1.8rem !important;
     }
 
-    .mode-buttons {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 6px;
-    }
-
-    .mode-btn {
-        padding: 6px 10px;
-        font-size: 0.8rem;
-    }
-    
-    .home-container .media-icons, 
-    .media-icons {
+    .home-container .media-icons {
         gap: 20px !important;
     }
 }
